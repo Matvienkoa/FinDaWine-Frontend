@@ -1,28 +1,34 @@
 <template>
     <div class="container" id="bloc-page-wine">
-        <div id="wine-prez">
-            <div class="img-card col-6">
+        <div class="row" id="bloc-img">
+        <h1></h1>
+        </div>
+        <div class="row" id="wine-prez">
+            <div class="img-card col-sm-5">
                 <img :src="getWine.imageUrl" alt="" class="wine-img">
             </div>
-            <div class="wine-info col-6">
-                <span>{{ getWine.domaine }}</span>
-                <span>{{ getWine.appellation }}</span>
-                <span>{{ getWine.millesime }}</span>
-                <span>{{ getWine.cepage }}</span>
-                <span>{{ getWine.description }}</span>
-                <span>{{ getWine.pays }}</span>
-                <span>{{ getWine.alcool }}</span>
-                <span>{{ getWine.format }}</span>
-                <span>{{ getWine.prix }}</span>
-                <span>{{ getWine.couleur }}</span>
-                <span>{{ getWine.oeil }}</span>
-                <span>{{ getWine.nez }}</span>
-                <span>{{ getWine.bouche }}</span>
-                <span>{{ getWine.temperature }}</span>
-                <span>{{ getWine.conservation }}</span>
-                <span>{{ getWine.accords }}</span>
-                <span>{{ getWine.viticulture }}</span>
-            </div>
+            <div class="wine-info col-sm-7">
+                <span><span class="titles">Domaine : </span>{{ getWine.domaine }}</span>
+                <span><span class="titles">Appellation : </span>{{ getWine.appellation }}</span>
+                <span><span class="titles">Millésime : </span>{{ getWine.millesime }}</span>
+                <span><span class="titles">Pays : </span>{{ getWine.pays }}</span>
+                <span><span class="titles">Région :</span> {{ getWine.region }}</span>
+                <span><span class="titles">Couleur : </span>{{ getWine.couleur }}</span>
+                <span><span class="titles">Cépage : </span>{{ getWine.cepage }}</span>
+                <span><span class="titles">Viticulture : </span>{{ getWine.viticulture }}</span>
+                <span><span class="titles">Alcool : </span>{{ getWine.alcool }} %</span>
+                <span><span class="titles">Format : </span>{{ getWine.format }} cL</span>
+                <span><span class="titles">Prix TTC : </span>{{ getWine.prix }} €</span>
+                <span><span class="titles">Description : </span>{{ getWine.description }}</span>
+            </div>    
+        </div>
+        <div class="wine-info row">   
+                <span><span class="titles">A l'Oeil : </span>{{ getWine.oeil }}</span>
+                <span><span class="titles">Au Nez : </span>{{ getWine.nez }}</span>
+                <span><span class="titles">En Bouche : </span>{{ getWine.bouche }}</span>
+                <span><span class="titles">Température de Service : </span>{{ getWine.temperature }}</span>
+                <span><span class="titles">Garde : </span>{{ getWine.conservation }}</span>
+                <span><span class="titles">Accords : </span>{{ getWine.accords }}</span>
         </div>
     </div>
 </template>
@@ -45,8 +51,15 @@ export default {
 </script>
 
 <style scoped>
-    #bloc-page-wine{
-        margin-top: 50px;
+    #bloc-img{
+        height: 220px;
+        background-image: url('../assets/cave.png');
+        background-size: cover;
+        margin-right: -150px;
+        margin-left: -150px;
+    }
+    .img-card{
+        display: flex;
     }
     .wine-img{
         width: 100%;
@@ -55,11 +68,21 @@ export default {
     }
     #wine-prez{
         display: flex;
+        border-radius: 30px 30px 0 0;
+        margin-top: -60px;
+        background-color: white;
+        padding-top: 40px;
     }
     .wine-info{
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
+        text-align: start;
+        font-size: 1.1rem;
+    }
+    .titles{
+        font-weight: bold;
+        color: rgb(86,10,34);
     }
 </style>
