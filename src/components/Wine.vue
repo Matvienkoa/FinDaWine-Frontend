@@ -7,7 +7,7 @@
             <div class="img-card col-sm-5">
                 <img :src="getWine.imageUrl" alt="" class="wine-img">
             </div>
-            <div class="wine-info col-sm-7">
+            <div id="info1" class="wine-info col-sm-7">
                 <span><span class="titles">Domaine : </span>{{ getWine.domaine }}</span>
                 <span><span class="titles">Appellation : </span>{{ getWine.appellation }}</span>
                 <span><span class="titles">Millésime : </span>{{ getWine.millesime }}</span>
@@ -19,17 +19,19 @@
                 <span><span class="titles">Alcool : </span>{{ getWine.alcool }} %</span>
                 <span><span class="titles">Format : </span>{{ getWine.format }} cL</span>
                 <span><span class="titles">Prix TTC : </span>{{ getWine.prix }} €</span>
+                
+            </div>   
+            <div id="info2" class="wine-info row">   
                 <span><span class="titles">Description : </span>{{ getWine.description }}</span>
-            </div>    
-        </div>
-        <div class="wine-info row">   
                 <span><span class="titles">A l'Oeil : </span>{{ getWine.oeil }}</span>
                 <span><span class="titles">Au Nez : </span>{{ getWine.nez }}</span>
                 <span><span class="titles">En Bouche : </span>{{ getWine.bouche }}</span>
                 <span><span class="titles">Température de Service : </span>{{ getWine.temperature }}</span>
                 <span><span class="titles">Garde : </span>{{ getWine.conservation }}</span>
                 <span><span class="titles">Accords : </span>{{ getWine.accords }}</span>
+            </div> 
         </div>
+        
     </div>
 </template>
 
@@ -69,9 +71,23 @@ export default {
     #wine-prez{
         display: flex;
         border-radius: 30px 30px 0 0;
-        margin-top: -60px;
+        margin-top: -120px;
         background-color: white;
         padding-top: 40px;
+    }
+    #info1{
+        padding-bottom: 80px;
+        padding-top: 20px;
+        font-size: 1.2rem;
+    }
+
+    #test span{
+        margin-bottom: 10px;
+    }
+    #info2{
+        font-size: 1.2rem;
+        padding-top: 50px;
+        padding-left: 40px;
     }
     .wine-info{
         display: flex;

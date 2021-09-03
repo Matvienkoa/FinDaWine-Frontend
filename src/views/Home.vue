@@ -55,8 +55,8 @@
                 <span><span class="titles">Millésime :</span> {{ wine.millesime }}</span>
                 <span><span class="titles">Région :</span> {{ wine.region }}</span>
                 <span><span class="titles">Couleur :</span> {{ wine.couleur }}</span>
-                <span><span class="titles">Prix TTC :</span> {{ wine.prix }} €</span>
-                <span>+ d'Infos</span>
+                <span><span class="titles">Prix TTC :</span> {{ wine.prix }} € <span v-if="wine.promo === 1" id="promo">Promo</span></span>
+                <span id="more-infos">+ d'Infos</span>
               </div>
         </div>
       </div>
@@ -210,13 +210,15 @@ export default {
 /*Special-close Wine-Component*/
 #close-wine{
   cursor: pointer;
-  font-size: 2.5rem;
+  font-size: 2rem;
   position: absolute;
-  top: 260px;
+  top: 210px;
   left: 8%;
+  color: rgb(86,10,34);
 }
 
 /*Home-Page*/
+/*bg img*/
 #bloc-img{
   height: 250px;
   background-image: url('../assets/vignes2.png');
@@ -230,6 +232,7 @@ h1{
   font-size: 2.5rem;
 }
 
+/*Search*/
 #search-container{
   padding-bottom: 20px;
   border-radius: 30px 30px 0 0;
@@ -257,6 +260,7 @@ h1{
   font-weight: bold;
 }
 
+/*Select Filter*/
 #select-container{
   padding-bottom: 50px;
   padding-top: 10px;
@@ -267,11 +271,12 @@ h1{
   margin-left: 15px;
   margin-bottom: 10px;
   border-color: rgb(86,10,34);
-  border-width: 3px;
+  border-width: 2px;
   border-radius: 7px;
   height: 35px;
   width: 200px;
 }
+
 /*Cancel Search*/
 .cancel{
   margin-top: 5px;
@@ -307,6 +312,7 @@ h1{
   margin-top: -40px;
   background-color: #fff;
   padding-top: 20px;
+  box-shadow: 0px -2px 0px rgb(100, 10, 40);
 }
 /*Cards*/
 .wine-card{
@@ -314,6 +320,16 @@ h1{
   margin-bottom: 50px;
   cursor: pointer;
 }
+/*Img*/
+.img-card{
+  display: flex;
+}
+.wine-img{
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+/*Infos*/
 #wine-info{
   display: flex;
   flex-direction: column;
@@ -325,16 +341,21 @@ h1{
   font-weight: bold;
   color: rgb(86,10,34);
 }
-.img-card{
-  display: flex;
+#more-infos{
+  align-self: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  justify-self: end;
+  font-weight: bold;
+  color: white;
+  border: 2px solid white;
+  border-radius: 30px;
+  padding: 2px 6px;
+  background-color: rgb(153, 75, 98);
 }
-.wine-img{
-  width: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-a {
-  text-decoration: none;
-  color: black;
+#promo{
+  font-weight: bold;
+  color: red;
+  margin-left: 10px;
 }
 </style>
