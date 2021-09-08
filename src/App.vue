@@ -2,10 +2,24 @@
   <div id="nav">
     <img src="./assets/grape.png" alt="" id="logo-grape">
     <img src="./assets/title.png" alt="" id="logo-title">
-    <h1>Notre Séléction de Vins...</h1>
+    <h1 v-if="this.$store.state.admin.isAdmin === 0 || !this.$store.state.admin.isAdmin">Notre Séléction de Vins...</h1>
+    <h2 v-if="this.$store.state.admin.isAdmin === 1">Bienvenue, ici Gérez vos produits...</h2>
+    <span v-if="this.$store.state.admin.isAdmin === 1" id="deco" @click="logOut"><i class="fas fa-times"></i> Déconnexion</span>
   </div>
   <router-view/>
 </template>
+
+<script>
+export default {
+  name: 'App',
+  methods: {
+    logOut() {
+      this.$store.commit("LOG_OUT");
+      this.$router.push('/login');
+    },
+  }
+}
+</script>
 
 <style>
 /*Polices*/
@@ -27,6 +41,22 @@ h1{
   font-size: 2.2rem;
   margin-bottom: -10px;
   margin-top: 16px;
+  color: white;
+}
+h2{
+  font-family: 'allura';
+  font-size: 2.2rem;
+  
+  margin-top: -10px;
+  color: white;
+}
+#deco{
+  color: white;
+  margin-bottom: -5px;
+  cursor: pointer;
+}
+#deco i{
+  margin-right: 10px;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -42,14 +72,9 @@ h1{
 #nav {
   padding: 16px;
   background-image: linear-gradient(68deg,rgb(86,10,34), rgb(121,36,61));
-  text-align: right;
-}
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-#nav a.router-link-exact-active {
-  color: #42b983;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 #logo-grape{
   width: 40px;
@@ -62,8 +87,5 @@ h1{
   position: absolute;
   left: 60px;
   top: 17px;
-}
-h1{
-  color: white;
 }
 </style>

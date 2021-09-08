@@ -11,9 +11,9 @@
           <i class="fas fa-search"></i>
           <input v-model="searchKey" type="search" id="search-key" placeholder="Entrez le nom d'un vin...">
         </span>
-        <span class="col">
+        <span id="scan" class="col">
           <i class="fas fa-barcode" id="barcode"></i>
-          <span id="scan-txt">Scanner un Produit</span>
+          <router-link to="scan"><span id="scan-txt">Scanner un Produit</span></router-link>
         </span>
       </div>
       <div class="row row-cols-auto align-items-center justify-content-center" id="select-container">  
@@ -41,6 +41,7 @@
           <i class="fas fa-times" id="cancel-cross"></i>
           <h5>Annuler la Recherche</h5>
         </div>
+        <div v-if="this.$store.state.admin.isAdmin === 1" class="col-12" id="add-product"><router-link to="/addproduct"><i class="fas fa-plus"></i><span> Ajouter un Produit</span></router-link></div>
       </div>
       <div id="wine-prez" class="row">
         <h3 v-if="search.length === 0" id="no-result">Nous n'avons pas encore ce Vin...<br>Peut être prochainement ^^</h3>
@@ -67,7 +68,6 @@
 <script>
 import instance from '../axios';
 import Wine from '@/components/Wine.vue';
-//import { mapActions, mapGetters } from 'vuex';
 export default {
   name: 'Home',
   components: {
@@ -94,7 +94,7 @@ export default {
       viticultureOption: [],
       viticultureSelected: "",
       promoList: [],
-      showWine: "no"
+      showWine: "no",
     }
   },
   props: {
@@ -160,6 +160,9 @@ export default {
           }
         }
       })
+      .then(() => {
+        this.$store.dispatch('getIfAdmin');
+      })
       .catch((response) => {
         console.log(response);
       })
@@ -200,8 +203,8 @@ export default {
           id: arrViticulture[i],
         });
       }
-    }, 500);
-  }
+    }, 500)
+  },
 }
 </script>
 
@@ -212,9 +215,25 @@ export default {
   cursor: pointer;
   font-size: 2rem;
   position: absolute;
-  top: 210px;
+  top: 195px;
   left: 8%;
   color: rgb(86,10,34);
+}
+
+/*Admin Functions*/
+#add-product{
+  font-size: 1.3rem;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: rgb(7, 105, 7);
+  font-weight: bold;
+}
+#add-product i{
+  cursor: pointer;
+  margin-right: 7px;
+}
+#add-product span{
+  cursor: pointer;
 }
 
 /*Home-Page*/
@@ -239,6 +258,7 @@ h1{
   margin-top: -60px;
   background-color: rgb(231, 231, 231);
   padding-top: 15px;
+  box-shadow: 0px -2px 0px rgb(100, 10, 40);
 }
 #search-container i{
   margin-right: 15px;
@@ -251,6 +271,9 @@ h1{
 }
 .fa-search{
   font-size: 1.5rem;
+}
+#scan{
+  cursor: pointer;
 }
 #barcode{
   font-size: 2.5rem;
@@ -267,6 +290,7 @@ h1{
   background-color: rgb(231, 231, 231);
 }
 .select{
+  cursor: pointer;
   margin-right: 15px;
   margin-left: 15px;
   margin-bottom: 10px;

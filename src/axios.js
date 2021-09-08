@@ -7,7 +7,7 @@ const instance = axios.create({
 });
 
 // Config Token in Anthorization-Header
-/*instance.interceptors.request.use(
+instance.interceptors.request.use(
     function(config) {
       const token = localStorage.getItem("token"); 
       if (token) {
@@ -18,6 +18,6 @@ const instance = axios.create({
     function(error) {
       return Promise.reject(error);
     }
-  );*/
+  );
     
 export default instance;

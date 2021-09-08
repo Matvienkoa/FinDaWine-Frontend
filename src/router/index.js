@@ -8,16 +8,20 @@ const routes = [
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
-    component: () => import('../views/About.vue')
+    path: '/login',
+    name: 'Login',
+    component: () => import('../views/Login.vue')
   },
-  /*{
-    path: '/wines/:id',
-    name: 'wine',
-    component: () => import('../views/Wine.vue'),
-    props: true
-  }*/
+  {
+    path: '/addproduct',
+    name: 'addproduct',
+    component: () => import('../components/AddWine.vue')
+  },
+  {
+    path: '/scan',
+    name: 'scan',
+    component: () => import('../views/Scan.vue')
+  },
 ]
 
 const router = createRouter({
