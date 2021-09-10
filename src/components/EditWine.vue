@@ -1,6 +1,6 @@
 <template>
     <div class="container" id="bloc-page-edit-wine">
-        <h2>Modifier un Produit</h2>
+        <h3>Modifier un Produit</h3>
         <form @submit.prevent="editProduct">
             <label for="domaine" class="form-label">Domaine :</label>
             <input v-model="domaine" type="text" name="domaine" class="form-control" required>
@@ -154,7 +154,7 @@ export default {
 </script>
 
 <style scoped>
-   h2{
+   h3{
         font-weight: bold;
         color: rgb(86,10,34);
         margin-bottom: 20px;

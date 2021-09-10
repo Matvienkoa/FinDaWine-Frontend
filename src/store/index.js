@@ -24,6 +24,9 @@ export default createStore({
     getWine: (state) => {
       return state.wine
     },
+    getBarCode: (state) => {
+      return state.barCode
+    }
   },
 
   mutations: {

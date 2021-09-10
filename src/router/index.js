@@ -22,6 +22,11 @@ const routes = [
     name: 'scan',
     component: () => import('../views/Scan.vue')
   },
+  {
+    path: '/result',
+    name: 'result',
+    component: () => import('../components/Result.vue')
+  },
 ]
 
 const router = createRouter({

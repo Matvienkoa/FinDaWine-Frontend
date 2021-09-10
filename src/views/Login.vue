@@ -34,7 +34,8 @@ export default {
   }
   .form{
     display: block;
-    width: 250px;
+    width: 60%;
+    max-width: 300px;
     margin: auto;
     padding-top: 150px;
   }

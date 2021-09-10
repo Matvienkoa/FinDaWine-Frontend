@@ -1,5 +1,5 @@
 <template>
-    <div class="container" id="bloc-page-wine">   
+    <div class="" id="bloc-page-wine">   
             <div class="row" id="bloc-img"></div>
             <div class="row" id="wine-prez">
                 <EditWine v-if="editMode === 'yes'" :id="this.id"/>
@@ -121,13 +121,17 @@ export default {
     font-size: 1.2rem;
 }
 
-
+/*Bloc-page*/
+#bloc-page-wine{
+    max-width: 95%;
+    margin: auto;
+}
 #bloc-img{
-    height: 220px;
+    height: 250px;
     background-image: url('../assets/cave.png');
     background-size: cover;
-    margin-right: -150px;
-    margin-left: -150px;
+    margin-right: -200px;
+    margin-left: -200px;
 }
 .img-card{
     display: flex;
@@ -169,5 +173,16 @@ export default {
 .titles{
     font-weight: bold;
     color: rgb(86,10,34);
+}
+
+@media screen and (min-width: 1182px) {
+#wine-prez{
+    margin-top: -90px;
+  }
+  #bloc-img{
+    height: 300px;
+    margin-right: -310px;
+    margin-left: -310px;
+  }
 }
 </style>

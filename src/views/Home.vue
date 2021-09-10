@@ -46,7 +46,7 @@
       <div id="wine-prez" class="row">
         <h3 v-if="search.length === 0" id="no-result">Nous n'avons pas encore ce Vin...<br>Peut être prochainement ^^</h3>
         <i v-if="search.length === 0" class="fas fa-wine-glass-alt"></i>
-        <div @click="switchToShowWine(), setUpWineId(wine.id)" v-for="wine, id in search" :key="id" class="col-sm-6 wine-card">
+        <div @click="switchToShowWine(), setUpWineId(wine.id)" v-for="wine, id in search" :key="id" class="col-sm-6 col-lg-4 col-xxl-3 wine-card">
               <div class="col-4 img-card">
                 <img :src="wine.imageUrl" alt="" class="wine-img">
               </div>
@@ -210,40 +210,17 @@ export default {
 
 <style scoped>
 
-/*Special-close Wine-Component*/
-#close-wine{
-  cursor: pointer;
-  font-size: 2rem;
-  position: absolute;
-  top: 195px;
-  left: 8%;
-  color: rgb(86,10,34);
-}
-
-/*Admin Functions*/
-#add-product{
-  font-size: 1.3rem;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  color: rgb(7, 105, 7);
-  font-weight: bold;
-}
-#add-product i{
-  cursor: pointer;
-  margin-right: 7px;
-}
-#add-product span{
-  cursor: pointer;
-}
-
 /*Home-Page*/
+#bloc-page{
+  max-width: 95%;
+}
 /*bg img*/
 #bloc-img{
   height: 250px;
   background-image: url('../assets/vignes2.png');
   background-size: cover;
-  margin-right: -150px;
-  margin-left: -150px;
+  margin-right: -200px;
+  margin-left: -200px;
 }
 h1{
   padding-top: 15px;
@@ -274,6 +251,15 @@ h1{
 }
 #scan{
   cursor: pointer;
+  background-color: rgb(124, 21, 54);
+  border-radius: 20px;
+  padding: 6px 20px;
+}
+#scan i, #scan a{
+  color: white;
+}
+#scan a{
+  text-decoration: none;
 }
 #barcode{
   font-size: 2.5rem;
@@ -381,5 +367,114 @@ h1{
   font-weight: bold;
   color: red;
   margin-left: 10px;
+}
+
+/*Special-close Wine-Component*/
+#close-wine{
+  cursor: pointer;
+  font-size: 2.7rem;
+  position: absolute;
+  top: 100px;
+  left: 40px;
+  color: rgb(86,10,34);
+}
+
+@media screen and (min-width: 1551px){
+  #close-wine{
+    top: 300px;
+    left: 250px;
+  }
+}
+@media screen and (min-width: 1332px) and (max-width: 1550px){
+  #close-wine{
+    top: 300px;
+    left: 200px;
+  }
+}
+@media screen and (min-width: 1183px) and (max-width: 1331px){
+  #close-wine{
+    top: 300px;
+    left: 170px;
+  }
+}
+@media screen and (min-width: 951px) and (max-width: 1182px){
+  #close-wine{
+    top: 220px;
+    left: 70px;
+  }
+}
+@media screen and (min-width: 462px) and (max-width: 950px) {
+  #close-wine{
+    top: 220px;
+    left: 60px;
+  }
+}
+@media screen and (max-width: 461px) {
+  #close-wine{
+    top: 280px;
+  }
+}
+
+/*Admin Functions*/
+#add-product{
+  font-size: 1.3rem;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: rgb(7, 105, 7);
+  font-weight: bold;
+}
+#add-product a{
+  text-decoration: none;
+  color: rgb(17, 94, 17);
+}
+#add-product i{
+  cursor: pointer;
+  margin-right: 7px;
+}
+#add-product span{
+  cursor: pointer;
+}
+
+/* -----Responsive-----*/
+@media screen and (max-width: 460px) {
+  #search-container{
+    margin-top: -110px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+  }
+  #scan{
+    margin-top: 20px;
+    background-color: rgb(124, 21, 54);
+    border-radius: 20px;
+    padding: 6px 15px;
+  }
+  #scan i, #scan a{
+    color: white;
+  }
+  .select{
+    width: 70%;
+  }
+  #select-container{
+    padding-bottom: 60px;
+  }
+}
+@media screen and (min-width: 461px) and (max-width: 572px) {
+  #scan{
+    margin-top: 20px;
+  }
+
+}
+@media screen and (min-width: 1182px) {
+  #bloc-img{
+    height: 300px;
+    margin-right: -310px;
+    margin-left: -310px;
+  }
+  #search-container{
+    margin-top: -90px;
+  }
+  #bloc-page{
+    max-width: 80%;
+  }
 }
 </style>

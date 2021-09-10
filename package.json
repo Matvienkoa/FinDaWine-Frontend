@@ -12,6 +12,7 @@
     "jsonwebtoken": "^8.5.1",
     "quagga": "^0.12.1",
     "vue": "^3.0.0",
+    "vue-quaggajs": "^1.0.12",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
   },
