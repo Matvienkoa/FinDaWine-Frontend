@@ -3,8 +3,9 @@
     <img src="./assets/grape.png" alt="" id="logo-grape">
     <img src="./assets/title.png" alt="" id="logo-title">
     <h1 v-if="this.$store.state.admin.isAdmin === 0 || !this.$store.state.admin.isAdmin">Notre Séléction de Vins...</h1>
-    <h2 v-if="this.$store.state.admin.isAdmin === 1">Bienvenue, ici Gérez vos produits...</h2>
     <span v-if="this.$store.state.admin.isAdmin === 1" id="deco" @click="logOut"><i class="fas fa-times"></i> Déconnexion</span>
+    <h2 v-if="this.$store.state.admin.isAdmin === 1">Gérez vos produits...</h2>
+    
   </div>
   <router-view/>
 </template>
@@ -86,14 +87,15 @@ h1{
 h2{
   font-family: 'allura';
   font-size: 2.2rem;
-  
-  margin-top: -10px;
+  margin-bottom: -10px;
+  margin-top: 16px;
   color: white;
 }
 /*Deconnexion*/
 #deco{
   color: white;
-  margin-bottom: -5px;
+  margin-bottom: -15px;
+  margin-top: -10px;
   cursor: pointer;
 }
 #deco i{
@@ -117,9 +119,6 @@ h2{
     left: 60px;
     top: 17px;
   }
-}
-
-@media screen and (max-width: 560px) {
   h2{
     margin-top: 70px;
   }

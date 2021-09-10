@@ -28,7 +28,7 @@ export default {
             this.$store.state.wine = response.data;
       })
       Quagga.stop();
-      this.$router.push('/wine');
+      this.$router.push('/result');
     },
   },
 };
