@@ -4,13 +4,14 @@
             <div class="row" id="bloc-img"></div>
             <div class="row" id="wine-prez">
                 <div id="choice">
-                    <router-link to="/"><span id="home"><i class="fas fa-arrow-left"></i> Retour à l'accueil</span></router-link>
-                    <router-link to="/scan"><span id="other-scan"><i class="fas fa-barcode"></i> Scanner un autre Produit</span></router-link>
+                    <router-link to="/"><span @click="resetLocalStorage" id="home"><i class="fas fa-arrow-left"></i> Retour à l'accueil</span></router-link>
+                    <router-link to="/scan"><span @click="resetLocalStorage" id="other-scan"><i class="fas fa-barcode"></i> Scanner un autre Produit</span></router-link>
                 </div>
-                <div class="img-card col-sm-5">
+                <div id="no-result" v-if="getWine === null">Oups... <i class="fas fa-meh-rolling-eyes"></i><i class="fas fa-meh-rolling-eyes"></i><br> Ce produit ne fait pas partie de notre catalogue!<br> Essayez un autre code!<br></div>
+                <div v-if="getWine !== null" class="img-card col-sm-5">
                     <img :src="getWine.imageUrl" alt="" class="wine-img" />
                 </div>
-                <div id="info1" class="wine-info col-sm-7">
+                <div v-if="getWine !== null" id="info1" class="wine-info col-sm-7">
                     <span class="query"><span class="titles">Domaine : </span><span>{{ getWine.domaine }}</span></span>
                     <span class="query"><span class="titles">Appellation : </span><span>{{ getWine.appellation }}</span></span>
                     <span class="query"><span class="titles">Millésime : </span><span>{{ getWine.millesime }}</span></span>
@@ -23,7 +24,7 @@
                     <span class="query"><span class="titles">Format : </span><span>{{ getWine.format }} cL</span></span>
                     <span class="query"><span class="titles">Prix TTC : </span><span>{{ getWine.prix }} €</span></span>
                 </div>
-                <div id="info2" class="wine-info row">
+                <div v-if="getWine !== null" id="info2" class="wine-info row">
                     <span class="query"><span class="titles">Description : </span><span>{{ getWine.description }}</span></span>
                     <span class="query"><span class="titles">A l'Oeil : </span><span>{{ getWine.oeil }}</span></span>
                     <span class="query"><span class="titles">Au Nez : </span><span>{{ getWine.nez }}</span></span>
@@ -38,16 +39,31 @@
 </template>
 
 <script>
+import instance from '../axios';
 import { mapGetters } from 'vuex';
 export default {
     name: "result",
     data () {
         return {
+            noData: ""
+        }
+    },
+    methods: {
+        resetLocalStorage() {
+            localStorage.removeItem('code');
         }
     },
     computed: {
         ...mapGetters(["getWine"]),
     },
+    mounted() {
+        let code = localStorage.getItem('code');
+        instance.get(`findawine/wines/code/${code}`)
+            .then((response) => {
+                    this.$store.state.wine = response.data;
+            })
+        
+    }
 }
 </script>
 
@@ -79,6 +95,14 @@ a{
 }
 #home i, #other-scan i{
     margin-right: 10px;
+}
+
+/*No Result*/
+#no-result{
+    height: 100vh;
+    margin-top: 80px;
+    font-size: 2rem;
+    color: rgb(100, 10, 40);
 }
 
 /*Produit*/
@@ -182,6 +206,20 @@ a{
     .query{
         display: flex;
         flex-direction: column;
+    }
+    
+}
+
+@media screen and (max-width: 650px) {
+    #choice{
+        flex-direction: column;
+    }
+    #choice a{
+        margin-top: 20px;
+    }
+    #no-result{
+        font-size: 1.5rem;
+        margin-top: 20px;
     }
 }
 </style>

@@ -1,41 +1,62 @@
 <template>
-    <div class="container" id="bloc-page-scan">
+    <div class="" id="bloc-page-scan">
         <div id="photo">
-            <v-quagga :onDetected="logIt" :readerSize="readerSize" :readerTypes="['ean_reader']"></v-quagga>
+            <!-- <v-quagga :onDetected="logIt" :readerSize="readerSize" :readerTypes="['ean_reader']"></v-quagga> -->
         </div>
     </div>
 </template>
 
 <script>
-import instance from '../axios';
 import Quagga from 'quagga';
 export default {
   name: "Scan",
   data() {
     return {
-      readerSize: {
-        width: 640,
-        height: 480,
-      },
       barCode: "",
     };
   },
-  methods: {
-    logIt(data) {
-      this.$store.commit('SET_BARCODE', data.codeResult.code);
-      instance.get(`findawine/wines/code/${data.codeResult.code}`)
-            .then((response) => {
-            this.$store.state.wine = response.data;
-      })
-      Quagga.stop();
-      this.$router.push('/result');
-    },
-  },
+  mounted() {
+    Quagga.init({
+        inputStream : {
+        name : "Live",
+        type : "LiveStream",
+        constraints: {
+        width: 680,
+        height: 800,
+        },
+        area: { // defines rectangle of the detection/localization area
+          top: "0%",    // top offset
+          right: "0%",  // right offset
+          left: "0%",   // left offset
+          bottom: "0%"  // bottom offset
+        },
+        singleChannel: false, // true: only the red color-channel is read
+        target: document.querySelector('#photo')
+        },
+        decoder : {
+        readers : ["ean_reader"]
+        },
+        halfSample: true,
+        patchSize: "medium",
+    }, function(err) {
+        if (err) {
+            console.log(err);
+            return
+        }
+        console.log("Initialization finished. Ready to start");
+        Quagga.start();
+    });
+    Quagga.onDetected(function(data){
+        localStorage.setItem('code', data.codeResult.code);
+        Quagga.stop()
+        window.location.href = '/result'
+    });
+  }
 };
 </script>
 
 <style scoped>
-#photo {
-  height: 100vh;
+#photo{
+  margin-top: 50px;
 }
 </style>

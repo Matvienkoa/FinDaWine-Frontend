@@ -18,6 +18,11 @@ const routes = [
     component: () => import('../components/AddWine.vue')
   },
   {
+    path: '/scanV1',
+    name: 'scanV1',
+    component: () => import('../views/ScanV1.vue')
+  },
+  {
     path: '/scan',
     name: 'scan',
     component: () => import('../views/Scan.vue')
