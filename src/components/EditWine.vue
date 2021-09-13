@@ -48,8 +48,7 @@
             <input v-model="promo" type="number" min="0" max="1" name="promo" class="form-control">
             <button type="submit" class="btn btn-success">Modifier</button>
         </form>
-    </div>
-    
+    </div> 
 </template>
 
 <script>
@@ -166,6 +165,8 @@ export default {
     }
     label{
         color: rgb(86,10,34);
+        font-weight: bold;
+        margin-top: 10px;
     }
     input{
         margin-bottom: 10px;
@@ -176,5 +177,10 @@ export default {
         margin-top: 30px;
         font-size: 1.2rem;
         margin-bottom: 30px;
+    }
+    @media screen and (max-width: 610px) {
+        form{
+            width: 90%;
+        }
     }
 </style>

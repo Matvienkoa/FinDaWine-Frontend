@@ -50,13 +50,15 @@
               <div class="col-4 img-card">
                 <img :src="wine.imageUrl" alt="" class="wine-img">
               </div>
-              <div id="wine-info" class="col-8">
-                <span><span class="titles">Domaine :</span> {{ wine.domaine }}</span>
-                <span><span class="titles">Appellation :</span> {{ wine.appellation }}</span>
-                <span><span class="titles">Millésime :</span> {{ wine.millesime }}</span>
-                <span><span class="titles">Région :</span> {{ wine.region }}</span>
-                <span><span class="titles">Couleur :</span> {{ wine.couleur }}</span>
-                <span><span class="titles">Prix TTC :</span> {{ wine.prix }} € <span v-if="wine.promo === 1" id="promo">Promo</span></span>
+              <div id="wine-legend" class="col-8">
+                <div id="wine-info">
+                  <span><span class="titles">Domaine :</span> {{ wine.domaine }}</span>
+                  <span><span class="titles">Appellation :</span> {{ wine.appellation }}</span>
+                  <span><span class="titles">Millésime :</span> {{ wine.millesime }}</span>
+                  <span><span class="titles">Région :</span> {{ wine.region }}</span>
+                  <span><span class="titles">Couleur :</span> {{ wine.couleur }}</span>
+                  <span><span class="titles">Prix TTC :</span> {{ wine.prix }} € <span v-if="wine.promo === 1" id="promo">Promo</span></span>
+                </div>
                 <span id="more-infos">+ d'Infos</span>
               </div>
         </div>
@@ -100,7 +102,6 @@ export default {
   props: {
   },
   methods: {
-    //...mapActions(["getAllWines"]),
     cancelSearch() {
       this.searchKey = "";
       this.regionSelected = "";
@@ -120,7 +121,6 @@ export default {
     },
   },
   computed: {
-    //...mapGetters(["getWines"]),
     search() {
       return this.wines.filter((wine) => {
         return (
@@ -135,7 +135,6 @@ export default {
     },
   },
   mounted() {
-    //this.getAllWines();
      instance.get('findawine/wines')
       .then((response) => response.data)
       .then((response) => {
@@ -340,6 +339,11 @@ h1{
   object-position: center;
 }
 /*Infos*/
+#wine-legend{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 #wine-info{
   display: flex;
   flex-direction: column;
@@ -353,9 +357,9 @@ h1{
 }
 #more-infos{
   align-self: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  justify-self: end;
+  margin-top: 20px;
+  
+  
   font-weight: bold;
   color: white;
   border: 2px solid white;

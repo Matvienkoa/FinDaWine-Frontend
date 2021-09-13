@@ -5,7 +5,6 @@
     <h1 v-if="this.$store.state.admin.isAdmin === 0 || !this.$store.state.admin.isAdmin">Notre Séléction de Vins...</h1>
     <span v-if="this.$store.state.admin.isAdmin === 1" id="deco" @click="logOut"><i class="fas fa-times"></i> Déconnexion</span>
     <h2 v-if="this.$store.state.admin.isAdmin === 1">Gérez vos produits...</h2>
-    
   </div>
   <router-view/>
 </template>
