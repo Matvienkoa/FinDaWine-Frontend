@@ -3,7 +3,7 @@ import axios from 'axios'
 
 // Config Url
 const instance = axios.create({
-    baseURL: 'http://localhost:3000/api/',
+    baseURL: 'https://findawine.herokuapp.com/api/',
 });
 
 // Config Token in Anthorization-Header
