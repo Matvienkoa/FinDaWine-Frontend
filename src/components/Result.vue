@@ -3,16 +3,23 @@
         <div class="" id="bloc-page-wine">
             <div class="" id="bloc-img"></div>
             <div class="row" id="wine-prez">
+                <span v-if="editMode === 'yes'" @click="swithToNoEditMode" id="cancel-edit"><i class="fas fa-times"></i> Annuler la Modification</span>
+                <EditWine v-if="editMode === 'yes'" :id="getWine.id"/>
+                <div v-if="this.$store.state.admin.isAdmin === 1 && editMode === 'no' && getWine !== null" class="admin-action">
+                    <span id="edit-product" @click="switchToEditMode">Modifier le produit</span>
+                    <span id="delete-product" @click="switchToDeleteMode">Supprimer le produit</span>
+                </div>
+                <div v-if="deleteMode === 'yes'" id="deleteBox"><p>Voulez-vous vraiment supprimer ce produit?</p><span @click.prevent="deleteProduct(getWine)" id="yes">Oui</span><span @click="switchToNoDeleteMode" id="no">Non</span></div>
                 <div id="choice">
                     <router-link to="/"><span @click="resetLocalStorage" id="home"><i class="fas fa-arrow-left"></i> Retour à l'accueil</span></router-link>
                     <router-link to="/scan"><span @click="resetLocalStorage" id="other-scan"><i class="fas fa-barcode"></i> Scanner un autre Produit</span></router-link>
                 </div>
                 <div id="no-result" v-if="getWine === null">Oups... <i class="fas fa-meh-rolling-eyes"></i><i class="fas fa-meh-rolling-eyes"></i><br> Ce produit ne fait pas partie de notre catalogue!<br> Essayez un autre code!<br></div>
-                <div v-if="getWine !== null" class="img-card col-sm-5">
+                <div v-if="getWine !== null && editMode === 'no'" class="img-card col-sm-5">
                     <!-- <img :src="getWine.imageUrl" alt="" class="wine-img" /> -->
                     <img src="../assets/bottle.jpg" class="wine-img">
                 </div>
-                <div v-if="getWine !== null" id="info1" class="wine-info col-sm-7">
+                <div v-if="getWine !== null && editMode === 'no'" id="info1" class="wine-info col-sm-7">
                     <span class="query"><span class="titles">Domaine : </span><span>{{ getWine.domaine }}</span></span>
                     <span class="query"><span class="titles">Appellation : </span><span>{{ getWine.appellation }}</span></span>
                     <span class="query"><span class="titles">Millésime : </span><span>{{ getWine.millesime }}</span></span>
@@ -25,7 +32,7 @@
                     <span class="query"><span class="titles">Format : </span><span>{{ getWine.format }} cL</span></span>
                     <span class="query"><span class="titles">Prix TTC : </span><span>{{ getWine.prix }} €</span></span>
                 </div>
-                <div v-if="getWine !== null" id="info2" class="wine-info row">
+                <div v-if="getWine !== null && editMode === 'no'" id="info2" class="wine-info row">
                     <span class="query"><span class="titles">Description : </span><span>{{ getWine.description }}</span></span>
                     <span class="query"><span class="titles">A l'Oeil : </span><span>{{ getWine.oeil }}</span></span>
                     <span class="query"><span class="titles">Au Nez : </span><span>{{ getWine.nez }}</span></span>
@@ -42,16 +49,44 @@
 <script>
 import instance from '../axios';
 import { mapGetters } from 'vuex';
+import EditWine from '@/components/EditWine.vue';
 export default {
     name: "result",
+    components: {
+        EditWine
+    },
     data () {
         return {
-            noData: ""
+            noData: "",
+            editMode: "no",
+            deleteMode: "no",
         }
     },
     methods: {
         resetLocalStorage() {
             localStorage.removeItem('code');
+        },
+        switchToEditMode () {
+            this.editMode = 'yes'
+        },
+        swithToNoEditMode () {
+            this.editMode = 'no'
+        },
+        switchToDeleteMode () {
+            this.deleteMode = "yes"
+        },
+        switchToNoDeleteMode () {
+            this.deleteMode = "no"
+        },
+        deleteProduct(getWine) {
+            instance.delete(`findawine/wines/${getWine.id}`)
+            .then(() => {
+                this.$router.push('/');
+            })
+            .catch((error) => {
+                this.error = error.response.data;
+                console.log(error.response.data);
+            })
         }
     },
     computed: {
@@ -63,12 +98,60 @@ export default {
             .then((response) => {
                     this.$store.state.wine = response.data;
             })
-        
+        this.$store.dispatch('getIfAdmin');
     }
 }
 </script>
 
 <style scoped>
+/*Admin*/
+.admin-action{
+    margin-top: -20px;
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+    text-align: center;
+}
+#edit-product, #delete-product{
+    margin-left: 15px;
+    margin-right: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+#edit-product{
+    color: orange;
+}
+#cancel-edit{
+    text-align: center;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
+#cancel-edit i{
+    margin-right: 15px;
+}
+#delete-product{
+    color: red;
+}
+#deleteBox{
+    color: rgb(86,10,34);
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+}
+#yes{
+    margin-right: 15px;
+    cursor: pointer;
+    color: green;
+    font-size: 1.4rem;
+}
+#no{
+    margin-left: 15px;
+    cursor: pointer;
+    color: red;
+    font-size: 1.4rem;
+}
+
 /*Bloc Page*/
 #bloc-page{
   max-width: 1200px;
