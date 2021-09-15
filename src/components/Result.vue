@@ -102,7 +102,7 @@ a{
 /*No Result*/
 #no-result{
     text-align: center;
-    height: 100vh;
+    padding-bottom: 500px;
     margin-top: 80px;
     font-size: 2rem;
     color: rgb(100, 10, 40);

@@ -324,7 +324,7 @@ export default {
   margin: auto;
   border-radius: 30px 30px 0 0;
   margin-top: -40px;
-  padding-bottom: 50px;
+  padding-bottom: 350px;
   background-color: #fff;
   padding-top: 20px;
   box-shadow: 0px -2px 0px rgb(100, 10, 40);
