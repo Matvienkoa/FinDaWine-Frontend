@@ -1,8 +1,9 @@
 <template>
     <div class="" id="bloc-page-scan">
-        <div id="photo">
-            <!-- <v-quagga :onDetected="logIt" :readerSize="readerSize" :readerTypes="['ean_reader']"></v-quagga> -->
+        <div id="home-bloc">
+          <router-link to="/"><span @click="stopScan()" id="home"><i class="fas fa-arrow-left"></i> Retour</span></router-link>
         </div>
+        <div id="photo"></div>
     </div>
 </template>
 
@@ -14,6 +15,11 @@ export default {
     return {
       barCode: "",
     };
+  },
+  methods: {
+    stopScan() {
+      Quagga.stop()
+    }
   },
   mounted() {
     Quagga.init({
@@ -59,10 +65,29 @@ export default {
 #bloc-page-scan{
   max-width: 1200px;
   margin: auto;
+  text-align: center;
 }
 #photo{
   margin: auto;
-  text-align: center;
-  margin-top: 50px;
+}
+#home-bloc{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+#home{
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    border-radius: 30px;
+    padding: 8px 15px;
+    background-color:rgb(100, 10, 40) ;
+    margin-bottom: 50px;
+}
+#home i{
+    margin-right: 10px;
+}
+a{
+  text-decoration: none;
 }
 </style>
