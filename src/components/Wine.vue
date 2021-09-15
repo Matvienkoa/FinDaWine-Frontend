@@ -157,7 +157,7 @@ export default {
     margin-top: -60px;
     background-color: white;
     padding-top: 40px;
-    padding-bottom: 40px;
+    padding-bottom: 100px;
     box-shadow: 0px -2px 0px rgb(100, 10, 40);
 }
 .img-card{
