@@ -10,7 +10,8 @@
             </div>
             <div v-if="deleteMode === 'yes'" id="deleteBox"><p>Voulez-vous vraiment supprimer ce produit?</p><span @click.prevent="deleteProduct(getWine)" id="yes">Oui</span><span @click="switchToNoDeleteMode" id="no">Non</span></div>
             <div v-if="editMode === 'no'" class="img-card col-sm-5">
-                <img :src="getWine.imageUrl" alt="" class="wine-img">
+                <!-- <img :src="getWine.imageUrl" alt="" class="wine-img"> -->
+                <img src="../assets/bottle.jpg" class="wine-img">
             </div>
             <div v-if="editMode === 'no'" id="info1" class="wine-info col-sm-7">
                 <span class="query"><span class="titles">Domaine : </span><span>{{ getWine.domaine }}</span></span>

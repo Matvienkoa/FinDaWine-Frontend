@@ -9,7 +9,8 @@
                 </div>
                 <div id="no-result" v-if="getWine === null">Oups... <i class="fas fa-meh-rolling-eyes"></i><i class="fas fa-meh-rolling-eyes"></i><br> Ce produit ne fait pas partie de notre catalogue!<br> Essayez un autre code!<br></div>
                 <div v-if="getWine !== null" class="img-card col-sm-5">
-                    <img :src="getWine.imageUrl" alt="" class="wine-img" />
+                    <!-- <img :src="getWine.imageUrl" alt="" class="wine-img" /> -->
+                    <img src="../assets/bottle.jpg" class="wine-img">
                 </div>
                 <div v-if="getWine !== null" id="info1" class="wine-info col-sm-7">
                     <span class="query"><span class="titles">Domaine : </span><span>{{ getWine.domaine }}</span></span>

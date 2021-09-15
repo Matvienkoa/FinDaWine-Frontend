@@ -46,7 +46,8 @@
         <i v-if="search.length === 0" class="fas fa-wine-glass-alt"></i>
         <div @click="switchToShowWine(), setUpWineId(wine.id)" v-for="wine, id in search" :key="id" class="col-sm-6 col-lg-4 col-xxl-3 wine-card">
               <div class="col-4 img-card">
-                <img :src="wine.imageUrl" alt="" class="wine-img">
+                <!-- <img :src="wine.imageUrl" alt="" class="wine-img"> -->
+                <img src="../assets/bottle.jpg" class="wine-img">
               </div>
               <div id="wine-legend" class="col-8">
                 <div id="wine-info">
