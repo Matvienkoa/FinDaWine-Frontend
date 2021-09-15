@@ -28,9 +28,7 @@ export default {
 
 <style scoped>
   #bloc-page{
-    background-image: url('../assets/bois4.jpg');
-    background-size: cover;
-    height: 100vh;
+    max-width: 1200px;
   }
   .form{
     display: block;
@@ -38,6 +36,7 @@ export default {
     max-width: 300px;
     margin: auto;
     padding-top: 150px;
+    text-align: center;
   }
   input{
     margin-bottom: 20px;

@@ -157,6 +157,7 @@ export default {
         font-weight: bold;
         color: rgb(86,10,34);
         margin-bottom: 20px;
+        text-align: center;
     }
     form{
         max-width: 500px;

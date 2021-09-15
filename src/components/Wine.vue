@@ -1,6 +1,6 @@
 <template>
     <div class="" id="bloc-page-wine">   
-        <div class="row" id="bloc-img"></div>
+        <div class="" id="bloc-img"></div>
         <div class="row" id="wine-prez">
             <span v-if="editMode === 'yes'" @click="swithToNoEditMode" id="cancel-edit"><i class="fas fa-times"></i> Annuler la Modification</span>
             <EditWine v-if="editMode === 'yes'" :id="this.id"/>
@@ -94,6 +94,7 @@ export default {
     margin-top: -20px;
     margin-bottom: 30px;
     font-size: 1.2rem;
+    text-align: center;
 }
 #edit-product, #delete-product{
     margin-left: 15px;
@@ -105,8 +106,8 @@ export default {
     color: orange;
 }
 #cancel-edit{
+    text-align: center;
     font-size: 1.3rem;
-    margin-top: 10px;
     margin-bottom: 15px;
     cursor: pointer;
     font-weight: bold;
@@ -121,6 +122,7 @@ export default {
     color: rgb(86,10,34);
     font-weight: bold;
     margin-bottom: 30px;
+    text-align: center;
 }
 #yes{
     margin-right: 15px;
@@ -137,22 +139,21 @@ export default {
 
 /*Bloc-page*/
 #bloc-page-wine{
-    max-width: 95%;
-    margin: auto;
+    background-image: url('../assets/bois4.jpg');
 }
 #bloc-img{
     height: 250px;
     background-image: url('../assets/cave.png');
     background-size: cover;
-    margin-right: -200px;
-    margin-left: -200px;
 }
 
 /*Wine Card*/
 #wine-prez{
+    width: 95%;
+    margin: auto;
     display: flex;
     border-radius: 30px 30px 0 0;
-    margin-top: -120px;
+    margin-top: -60px;
     background-color: white;
     padding-top: 40px;
     padding-bottom: 40px;
@@ -197,22 +198,12 @@ export default {
 }
 
 /*Responsive*/
-@media screen and (min-width: 1182px) {
-    #wine-prez{
-        margin-top: -90px;
-    }
-    #bloc-img{
-        height: 300px;
-        margin-right: -310px;
-        margin-left: -310px;
-    }
-}
-
 @media screen and (max-width: 576px) {
     .admin-action{
         display: flex;
         flex-direction: column;
         align-items: flex-end;
+        margin-top: 5px;
     }
     #edit-product, #delete-product{
         font-size: 1rem;

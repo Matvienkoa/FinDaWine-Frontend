@@ -56,7 +56,13 @@ export default {
 </script>
 
 <style scoped>
+#bloc-page-scan{
+  max-width: 1200px;
+  margin: auto;
+}
 #photo{
+  margin: auto;
+  text-align: center;
   margin-top: 50px;
 }
 </style>

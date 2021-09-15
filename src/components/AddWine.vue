@@ -153,14 +153,15 @@ export default {
         text-align: start;
     }
     #arrow{
-        color: white;
+        color: rgb(86,10,34);
         font-size: 2rem;
         margin-top: 30px;
         cursor: pointer;
     }
     h2{
+        text-align: center;
         font-weight: bold;
-        color: white;
+        color: rgb(86,10,34);
         margin-bottom: 20px;
         margin-top: -35px;
     }
@@ -170,7 +171,8 @@ export default {
         text-align: start;
     }
     label{
-        color: white;
+        color: rgb(86,10,34);
+        font-weight: bold;
     }
     input{
         margin-bottom: 10px;

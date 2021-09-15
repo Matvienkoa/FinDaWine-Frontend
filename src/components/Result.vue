@@ -1,7 +1,7 @@
 <template>
-    <div class="container" id="bloc-page">
+    <div class="" id="bloc-page">
         <div class="" id="bloc-page-wine">
-            <div class="row" id="bloc-img"></div>
+            <div class="" id="bloc-img"></div>
             <div class="row" id="wine-prez">
                 <div id="choice">
                     <router-link to="/"><span @click="resetLocalStorage" id="home"><i class="fas fa-arrow-left"></i> Retour à l'accueil</span></router-link>
@@ -70,7 +70,8 @@ export default {
 <style scoped>
 /*Bloc Page*/
 #bloc-page{
-  max-width: 95%;
+  max-width: 1200px;
+  margin: auto;
 }
 
 /*Options*/
@@ -99,6 +100,7 @@ a{
 
 /*No Result*/
 #no-result{
+    text-align: center;
     height: 100vh;
     margin-top: 80px;
     font-size: 2rem;
@@ -107,18 +109,18 @@ a{
 
 /*Produit*/
 #bloc-page-wine{
-    max-width: 95%;
-    margin: auto;
+    background-image: url('../assets/bois4.jpg');
 }
 #bloc-img{
     height: 250px;
     background-image: url('../assets/cave.png');
     background-size: cover;
-    margin-right: -200px;
-    margin-left: -200px;
 }
+
 /*Wine Card*/
 #wine-prez{
+    width: 95%;
+    margin: auto;
     display: flex;
     border-radius: 30px 30px 0 0;
     margin-top: -120px;
@@ -166,17 +168,6 @@ a{
 }
 
 /*Responsive*/
-@media screen and (min-width: 1182px) {
-    #wine-prez{
-        margin-top: -90px;
-    }
-    #bloc-img{
-        height: 300px;
-        margin-right: -310px;
-        margin-left: -310px;
-    }
-}
-
 @media screen and (max-width: 576px) {
     .admin-action{
         display: flex;

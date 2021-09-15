@@ -1,11 +1,9 @@
 <template>
-  <div class="container" id="bloc-page">
+  <div class="" id="bloc-page">
     <i v-if="showWine === 'yes'" @click="switchToHideWine" id="close-wine" class="fas fa-times"></i>
     <Wine v-if="showWine === 'yes'" :id="wineId"/>
     <div v-if="showWine === 'no'" id="bloc-page-home">
-      <div class="row" id="bloc-img">
-        <h1></h1>
-      </div>
+      <div class="" id="bloc-img"></div>
       <div class="row row-cols-auto align-items-center justify-content-evenly" id="search-container">
         <span class="col">
           <i class="fas fa-search"></i>
@@ -211,24 +209,24 @@ export default {
 
 /*Home-Page*/
 #bloc-page{
-  max-width: 95%;
+  max-width: 1200px;
+  margin: auto;
 }
+#bloc-page-home{
+  background-image: url('../assets/bois4.jpg');
+}
+
 /*bg img*/
 #bloc-img{
   height: 250px;
   background-image: url('../assets/vignes2.png');
   background-size: cover;
-  margin-right: -200px;
-  margin-left: -200px;
-}
-h1{
-  padding-top: 15px;
-  margin-bottom: 15px;
-  font-size: 2.5rem;
 }
 
 /*Search*/
 #search-container{
+  width: 95%;
+  margin: auto;
   padding-bottom: 20px;
   border-radius: 30px 30px 0 0;
   margin-top: -60px;
@@ -270,6 +268,8 @@ h1{
 
 /*Select Filter*/
 #select-container{
+  width: 95%;
+  margin: auto;
   padding-bottom: 50px;
   padding-top: 10px;
   background-color: rgb(231, 231, 231);
@@ -308,17 +308,22 @@ h1{
 #no-result{
   font-size: 2rem;
   margin-top: 50px;
+  text-align: center;
 }
 .fa-wine-glass-alt{
   font-size: 2.5rem;
   margin-top: 50px;
+  text-align: center;
 }
 
 /*Wines Card*/
 /*Bloc*/
 #wine-prez{
+  width: 95%;
+  margin: auto;
   border-radius: 30px 30px 0 0;
   margin-top: -40px;
+  padding-bottom: 50px;
   background-color: #fff;
   padding-top: 20px;
   box-shadow: 0px -2px 0px rgb(100, 10, 40);
@@ -358,8 +363,6 @@ h1{
 #more-infos{
   align-self: center;
   margin-top: 20px;
-  
-  
   font-weight: bold;
   color: white;
   border: 2px solid white;
@@ -382,40 +385,51 @@ h1{
   left: 40px;
   color: rgb(86,10,34);
 }
-
-@media screen and (min-width: 1551px){
+@media screen and (min-width: 1742px){
   #close-wine{
-    top: 300px;
+    top: 280px;
+    left: 400px;
+  }
+}
+@media screen and (min-width: 1652px) and (max-width: 1741px){
+  #close-wine{
+    top: 280px;
+    left: 300px;
+  }
+}
+@media screen and (min-width: 1551px) and (max-width: 1651px){
+  #close-wine{
+    top: 280px;
     left: 250px;
   }
 }
 @media screen and (min-width: 1332px) and (max-width: 1550px){
   #close-wine{
-    top: 300px;
+    top: 280px;
     left: 200px;
   }
 }
 @media screen and (min-width: 1183px) and (max-width: 1331px){
   #close-wine{
-    top: 300px;
+    top: 280px;
     left: 170px;
   }
 }
 @media screen and (min-width: 951px) and (max-width: 1182px){
   #close-wine{
-    top: 220px;
+    top: 280px;
     left: 70px;
   }
 }
 @media screen and (min-width: 462px) and (max-width: 950px) {
   #close-wine{
-    top: 220px;
+    top: 280px;
     left: 60px;
   }
 }
 @media screen and (max-width: 461px) {
   #close-wine{
-    top: 280px;
+    top: 340px;
   }
 }
 
@@ -426,6 +440,7 @@ h1{
   padding-bottom: 5px;
   color: rgb(7, 105, 7);
   font-weight: bold;
+  text-align: center;
 }
 #add-product a{
   text-decoration: none;
@@ -462,23 +477,10 @@ h1{
     padding-bottom: 60px;
   }
 }
-@media screen and (min-width: 461px) and (max-width: 572px) {
+@media screen and (min-width: 461px) and (max-width: 589px) {
   #scan{
     margin-top: 20px;
   }
 
-}
-@media screen and (min-width: 1182px) {
-  #bloc-img{
-    height: 300px;
-    margin-right: -310px;
-    margin-left: -310px;
-  }
-  #search-container{
-    margin-top: -90px;
-  }
-  #bloc-page{
-    max-width: 80%;
-  }
 }
 </style>
