@@ -70,9 +70,10 @@ export default createStore({
     },
     getIfAdmin: ({commit}) => {
       const token = localStorage.getItem("token");
-      const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
-      const userId = decodedToken.userId;
-      instance.get(`/findawine/auth/${userId}`)
+      if(token) {
+        const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
+        const userId = decodedToken.userId;
+        instance.get(`/findawine/auth/${userId}`)
         .then(function (response) {
           commit('SET_ADMIN', response.data);
           commit('SET_USER', {token, userId})
@@ -80,6 +81,7 @@ export default createStore({
         .catch(function (error) {
           console.log(error);
         });
+      }
     },
     getAllWines: ({ commit }) => {
       instance.get('findawine/wines')

@@ -56,7 +56,7 @@
                   <span><span class="titles">Millésime :</span> {{ wine.millesime }}</span>
                   <span><span class="titles">Région :</span> {{ wine.region }}</span>
                   <span><span class="titles">Couleur :</span> {{ wine.couleur }}</span>
-                  <span><span class="titles">Prix TTC :</span> {{ wine.prix }} € <span v-if="wine.promo === 1" id="promo">Promo</span></span>
+                  <span><span class="titles">Prix TTC :</span><span id="prix"> {{ wine.prix }} € </span><span v-if="wine.promo === '1'" id="promo">Promo</span></span>
                 </div>
                 <span id="more-infos">+ d'Infos</span>
               </div>
@@ -371,20 +371,30 @@ export default {
   padding: 2px 6px;
   background-color: rgb(153, 75, 98);
 }
+#prix{
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: rgb(160, 34, 72);
+}
 #promo{
   font-weight: bold;
   color: red;
   margin-left: 10px;
+  font-size: 1.2rem;
 }
 
 /*Special-close Wine-Component*/
 #close-wine{
   cursor: pointer;
-  font-size: 2.7rem;
+  font-size: 2rem;
   position: absolute;
   top: 100px;
-  left: 40px;
+  left: 30px;
   color: rgb(86,10,34);
+  border: 4px solid rgb(86,10,34);
+  border-radius: 40px;
+  padding: 1px 7px;
 }
 @media screen and (min-width: 1742px){
   #close-wine{
@@ -413,19 +423,19 @@ export default {
 @media screen and (min-width: 1183px) and (max-width: 1331px){
   #close-wine{
     top: 280px;
-    left: 170px;
+    left: 90px;
   }
 }
 @media screen and (min-width: 951px) and (max-width: 1182px){
   #close-wine{
     top: 280px;
-    left: 70px;
+    left: 50px;
   }
 }
 @media screen and (min-width: 462px) and (max-width: 950px) {
   #close-wine{
     top: 280px;
-    left: 60px;
+    left: 40px;
   }
 }
 @media screen and (max-width: 461px) {

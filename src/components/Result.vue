@@ -197,7 +197,7 @@ a{
 }
 #bloc-img{
     height: 250px;
-    background-image: url('../assets/cave.png');
+    background-image: url('../assets/wine2.png');
     background-size: cover;
 }
 
@@ -257,6 +257,7 @@ a{
         display: flex;
         flex-direction: column;
         align-items: flex-end;
+        margin-top: 5px;
     }
     #edit-product, #delete-product{
         font-size: 1rem;
