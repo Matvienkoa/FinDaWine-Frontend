@@ -30,13 +30,13 @@ export default {
         width: 680,
         height: 800,
         },
-        area: { // defines rectangle of the detection/localization area
-          top: "0%",    // top offset
-          right: "0%",  // right offset
-          left: "0%",   // left offset
-          bottom: "0%"  // bottom offset
+        area: { 
+          top: "0%",
+          right: "0%",
+          left: "0%",
+          bottom: "0%"
         },
-        singleChannel: false, // true: only the red color-channel is read
+        singleChannel: false,
         target: document.querySelector('#photo')
         },
         decoder : {

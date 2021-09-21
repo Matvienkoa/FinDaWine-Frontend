@@ -1,6 +1,6 @@
 {
     "name": "FinDaWine",
-    "short_name": "FAW",
+    "short_name": "FinDaWine",
     "start_url": "/",
     "display": "standalone",
     "background_color": "rgb(100, 10, 40)",
@@ -37,6 +37,5 @@
         "sizes": "512x512",
         "type": "image/png",
         "purpose": "any maskable"
-    }]
-        
+    }]   
 }

@@ -492,6 +492,5 @@ export default {
   #scan{
     margin-top: 20px;
   }
-
 }
 </style>
