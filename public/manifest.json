@@ -1,7 +1,7 @@
 {
     "name": "FinDaWine",
     "short_name": "FAW",
-    "start_url": "/index.html",
+    "start_url": "/",
     "display": "standalone",
     "background_color": "rgb(100, 10, 40)",
     "theme_color": "white",
