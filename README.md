@@ -1,19 +1,14 @@
-# findawine
+# Web Application FinDaWine
 
-## Project setup
-```
-npm install
-```
+![enter image description here](https://github.com/Matvienkoa/FinDaWine-Frontend/blob/master/src/assets/title.png?raw=true)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+Web application for self-service wine distributor. Search for product information, scan a bottle using the camera!
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Techno
+
+Node.js
+
+## Barcode-Scanner
+
+Quagga
