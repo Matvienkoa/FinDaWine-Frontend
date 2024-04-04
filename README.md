@@ -7,7 +7,7 @@ Web application for self-service wine distributor. Search for product informatio
 
 ## Techno
 
-Node.js
+Vue.js
 
 ## Barcode-Scanner
 
